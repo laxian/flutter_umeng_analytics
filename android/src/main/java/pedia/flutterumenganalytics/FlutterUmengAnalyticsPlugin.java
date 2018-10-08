@@ -41,7 +41,7 @@ public class FlutterUmengAnalyticsPlugin implements MethodCallHandler {
             result.success(null);
         } else if (call.method.equals("endPageView")) {
             MobclickAgent.onPageEnd((String) call.argument("name"));
-            MobclickAgent.onPause(this);
+            MobclickAgent.onPause(activity);
             result.success(null);
         } else if (call.method.equals("logEvent")) {
             MobclickAgent.onEvent((Context) activity, (String) call.argument("name"));
@@ -52,7 +52,9 @@ public class FlutterUmengAnalyticsPlugin implements MethodCallHandler {
     }
 
     public void init(MethodCall call, Result result) {
+        UMConfigure.setLogEnabled(true);
         UMConfigure.init(activity, (String) call.argument("key"), "Umeng", UMConfigure.DEVICE_TYPE_PHONE, null);
+        UMConfigure.setEncryptEnabled(true);
         result.success(true);
     }
 }
