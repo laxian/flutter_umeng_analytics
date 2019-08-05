@@ -31,6 +31,8 @@
     else
       [MobClick event:call.arguments[@"name"]];
     result(nil);
+  } else if ([@"reportError" isEqualToString:call.method]) {
+    result(nil);
   } else {
     result(FlutterMethodNotImplemented);
   }
