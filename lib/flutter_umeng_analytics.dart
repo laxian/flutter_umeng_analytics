@@ -17,14 +17,17 @@ class UMengAnalytics {
       {int policy,
       bool reportCrash,
       bool encrypt,
+      String channel,
       double interval,
       bool logEnable}) {
     Map<String, dynamic> args = {"key": key};
 
+    args["channel"] = channel;
     if (policy != null) args["policy"] = policy;
     if (reportCrash != null) args["reportCrash"] = reportCrash;
     if (encrypt != null) args["encrypt"] = encrypt;
     if (interval != null) args["interval"] = interval;
+    if (logEnable != null) args["logEnable"] = logEnable;
     if (logEnable != null) args["logEnable"] = logEnable;
 
     _channel.invokeMethod("init", args);
